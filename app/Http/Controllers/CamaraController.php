@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UpdateCameraRequest;
 use App\Http\Controllers\Controller;
 use App\Lugar;
 use App\Camara;
@@ -44,25 +45,17 @@ class CamaraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateCameraRequest $request)
     {
-        $rules = [
-              'ip' => 'required|unique:camara',
-              'lugar' =>  'required'
-        ];
-              
-        $messages = [ 
-          'required' => 'Un :attribute es requerido',
-          'unique' => 'Ese :attribute ya esta en uso',
-        ];
-        
-        $validator = Validator::make($request->all(), $rules, $messages);
-        
+        //$validator = Validator::make($request->all(), $rules, $messages);
+        /*
         if ($validator->fails()) {
             return redirect('camara/create')
                         ->withErrors($validator)
                         ->withInput();
         }
+        */
+        
         $model = new Camara();
         $model->ip = $request['ip'];
         $model->lugar_id = $request['lugar'];
@@ -107,7 +100,7 @@ class CamaraController extends Controller
     {
        $rules = [
               'ip' => 'required',
-              'lugar' =>  'required'
+              'lugar_id' =>  'required'
         ];
               
         $messages = [ 
@@ -124,7 +117,7 @@ class CamaraController extends Controller
         }
         $model = Camara::find($id);
         $model->ip = $request['ip'];
-        $model->lugar_id = $request['lugar'];
+        $model->lugar_id = $request['lugar_id'];
         $model->save();
         
         return redirect('camara')->with('message','Camara actualizada exitosamente!');

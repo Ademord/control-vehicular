@@ -6,7 +6,6 @@
       {!! Form::text('ip', null , [
                     'class' => 'form-control', 
                     'name' => 'ip',
-                    'id' => 'ip', 
                     'placeholder' => 'xxx.xxx.xxx.xxx',
                     'required' => 'required'
                     ]) 
@@ -15,9 +14,9 @@
       
     </div>
     
-    {!! Form::label('lugar', 'Lugar', ['for' => 'lugar']) !!}
+    {!! Form::label('lugar_id', 'Lugar') !!}
     <div class="input-group">
-      {!! Form::select('lugar', $lugares, null, ['class' => 'form-control'] ) !!}
+      {!! Form::select('lugar_id', $lugares, null, ['class' => 'form-control'] ) !!}
       <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
     </div>
   </div>

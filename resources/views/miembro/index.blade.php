@@ -13,6 +13,7 @@
         @foreach ($columns as $prop ) 
           <th>{{{ ucfirst($prop) }}}</th>
         @endforeach
+          <th>Placa</th>
           <th width="90%"><!-- spacer --></th>
           <th><!-- actions --></th>
         </tr>
@@ -28,7 +29,8 @@
         <tr>
           <td>{{{$model->nombres}}}</td>
           <td>{{{$model->apellidos}}}</td>                    
-          <td>{{{$model->cod_administrativo}}}</td>                    
+          <td>{{{$model->cod_administrativo}}}</td>
+          <td>{{{($aux = DB::table('placa')->select('numero')->where('miembro_id', '=', $model->id)->take(1)->get()) ? $aux[0]->numero : "-"}}}</td>                     
           <td><!-- spacer --></td>
 
           <td class="actions">
