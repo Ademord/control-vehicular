@@ -13,7 +13,8 @@
       <ul class="nav navbar-nav">
         <li><a href="{{ asset('lugar') }}">Lugares</a></li>
         <li><a href="{{ asset('camara') }}">Camaras</a></li>
-        <li><a href="{{ asset('miembro') }}">Miembros</a></li>        
+        <li><a href="{{ asset('miembro') }}">Miembros</a></li>  
+        <li><a href="{{ asset('registros') }}">Registros</a></li>        
       </ul> 
     </div><!--/.nav-collapse -->
   </div>

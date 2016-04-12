@@ -19,7 +19,10 @@ Route::resource('lugar', 'LugarController');
 Route::resource('camara', 'CamaraController');
 Route::resource('miembro', 'MiembroController', ['except' => ['edit', 'destroy', 'create', 'update', 'store'] ]);
 Route::resource('miembro.placa', 'PlacaController', ['except' => ['index'] ]);
+Route::resource('registros', 'RegistroController');
+Route::get('registros/get/{filename}', [
+	'as' => 'getentry', 'uses' => 'RegistroController@get']);
 
 Route::get('/db', function(){
-	return DB::table('lugar')->where('nombre', 'lugar1')->first()->nombre;
+	return DB::table('lugar')->insertGetId(['nombre' => 'UPSA2']);
 });
