@@ -20,12 +20,13 @@ class CamaraController extends Controller
     
     public function index()
     {
-        $data = Camara::all();
-        $columns = DB::getSchemaBuilder()->getColumnListing('camara');
-        $columns = array_slice($columns, 1, -2); 
-        $columns[array_search('lugar_id', $columns)] = 'Lugar';        
-        //return var_dump($data);
-        return view('camara.index', compact('data', 'columns'));
+        $query = \Request::get('q');
+
+        $data = $query
+            ? Camara::where('ip', 'LIKE', "%$query%")->latest('created_at')->paginate(5)
+            : Camara::orderBy('created_at','asc')->paginate(5);
+
+        return view('camara.index', compact('data'));
     }
 
     /**
@@ -58,7 +59,7 @@ class CamaraController extends Controller
         
         $model = new Camara();
         $model->ip = $request['ip'];
-        $model->lugar_id = $request['lugar'];
+        $model->lugar_id = $request['lugar_id'];
         //return var_dump($model);
         $model->save();
         return redirect('camara')->with('message','Camara creada exitosamente!');

@@ -24,12 +24,13 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        $data = Registro::all();
-        $columns = DB::getSchemaBuilder()->getColumnListing('registro');
-        $columns = array_slice($columns, 1, -2); 
-        $columns[array_search('created_at', $columns)] = 'Fecha';        
-        $columns[array_search('filename', $columns)] = 'Imagen';        
-        //return var_dump($data);
+        $query = \Request::get('q');
+
+        $data = $query
+            ? Registro::where('placa', 'LIKE', "%$query%")->latest('created_at')->paginate(5)
+            : Registro::orderBy('created_at','asc')->paginate(5);
+        
+        $columns = ['Camara', 'Lugar', 'Placa', 'Miembro', 'Fecha'];
         return view('registros.index', compact('data', 'columns'));
     }
 

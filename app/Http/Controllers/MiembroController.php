@@ -13,11 +13,13 @@ class MiembroController extends Controller
 {
     public function index()
     {
-        $data = Miembro::all();
-        $columns = DB::getSchemaBuilder()->getColumnListing('miembro');
-        $columns = array_slice($columns, 1, -2); 
-        //$placas = $model->placas()->get();
-        return view('miembro.index', compact('data', 'columns'));
+        $query = \Request::get('q');
+
+        $data = $query
+            ? Miembro::where('nombres', 'LIKE', "%$query%")->latest('created_at')->paginate(5)
+            : Miembro::orderBy('created_at','asc')->paginate(5);
+
+        return view('miembro.index', compact('data'));
     }
 
     public function show($id)

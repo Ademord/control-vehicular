@@ -26,3 +26,6 @@ Route::get('registros/get/{filename}', [
 Route::get('/db', function(){
 	return DB::table('lugar')->insertGetId(['nombre' => 'UPSA2']);
 });
+
+Route::get('/reportes/placas', 'ReportsController@placas');
+

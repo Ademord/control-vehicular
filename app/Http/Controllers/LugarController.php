@@ -19,10 +19,13 @@ class LugarController extends Controller
 
     public function index()
     {
-        $data = Lugar::all();
-        $columns = DB::getSchemaBuilder()->getColumnListing('lugar');
-        $columns = array_slice($columns, 1, -2); 
-        return view('lugar.index', compact('data', 'columns'));
+        $query = \Request::get('q');
+
+        $data = $query
+            ? Lugar::where('nombre', 'LIKE', "%$query%")->latest('created_at')->paginate(5)
+            : Lugar::orderBy('created_at','asc')->paginate(5);
+
+        return view('lugar.index', compact('data'));
     }
 
     public function create()

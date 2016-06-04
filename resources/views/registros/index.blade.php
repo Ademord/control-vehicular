@@ -1,7 +1,12 @@
 @extends('layouts.default')
 @section('content')
+
+
 	<div class="page-header">
-		<h1>Registros</h1>
+		<h1>
+      Registros
+      @include('includes.search',['url'=>'registros'])
+    </h1>
 	</div>
   @if (session('message'))
       <div class="alert alert-success">
@@ -10,7 +15,6 @@
   @endif
   <div class="panel panel-default with-table">
   
-  <div class="table-responsive">
     <table class="table">
       
       @include('registros.partials._properties')
@@ -22,11 +26,15 @@
         </tr>
       @endif
       @foreach ($data as $model)
-        <tr>
+        @if ($model->mismatch)
+          <tr class="danger">
+        @else
+          <tr>
+        @endif
           <td>{{{$model->camara}}}</td>
           <td>{{{$model->lugar}}}</td>
-          <td>{{{$model->filename}}}</td>
           <td>{{{$model->placa}}}</td>
+          <td>{{{$model->miembro}}}</td>
           <td>{{{$model->created_at}}}</td>
           <td><!-- spacer --></td>
 
@@ -41,6 +49,9 @@
       @endforeach
       </tbody>
     </table>
+    <div class="text-center">
+      {!! $data->render() !!}
+    </div>
   </div>
 
 @stop

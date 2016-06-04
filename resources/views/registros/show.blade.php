@@ -17,6 +17,9 @@
       {!! Form::label('placa', 'Placa: ') !!}
       {{{$model->placa}}} 
       <br>
+      {!! Form::label('miembro', 'Miembro: ') !!}
+      {{{$model->miembro}}} 
+      <br>
       {!! Form::label('filefield', 'Imagen: ') !!}
       <div class="input-group">
         <span class="input-group-addon">
