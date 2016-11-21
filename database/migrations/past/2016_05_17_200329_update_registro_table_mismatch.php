@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateRegistroTable extends Migration
+class UpdateRegistroTableMismatch extends Migration
 {
     /**
      * Run the migrations.
