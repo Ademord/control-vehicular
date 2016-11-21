@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 	<div class="page-header">
-    <h1>Nueva Camara</h1>
+    <h1>Nuevo Cliente</h1>
 	</div>
   
   @include('camara.partials._session')
