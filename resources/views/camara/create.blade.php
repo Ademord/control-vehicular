@@ -1,12 +1,12 @@
 @extends('layouts.default')
 @section('content')
 	<div class="page-header">
-    <h1>Nuevo Cliente</h1>
+    <h1>Nueva Camara</h1>
 	</div>
   
   @include('camara.partials._session')
 
   {!! Form::open(array('route' => 'camara.store')) !!}
-    @include('camara.partials._form')
+    @include('camara.partials._form2')
   {!! Form::close() !!}
 @stop
