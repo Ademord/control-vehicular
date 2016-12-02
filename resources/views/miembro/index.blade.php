@@ -29,7 +29,7 @@
             <td>{{{$model->nombres}}}</td>
             <td>{{{$model->apellidos}}}</td>                    
             <td>{{{$model->cod_administrativo}}}</td>
-            <td>{{{($aux = DB::table('placa')->select('numero')->where('miembro_id', '=', $model->id)->take(1)->get()) ? $aux[0]->numero : "-"}}}</td>                     
+            <td>{{{($aux = DB::table('matriculas')->select('numero')->where('miembro_id', '=', $model->id)->take(1)->get()) ? $aux[0]->numero : "-"}}}</td>                     
             <td><!-- spacer --></td>
 
             <td class="actions">

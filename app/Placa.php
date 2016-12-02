@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Placa extends Model
 {
-    protected $table = "placa";
+    protected $table = "matriculas";
     public function placas()
     {
         return $this->belongsTo('App\Miembro');

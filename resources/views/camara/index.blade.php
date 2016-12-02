@@ -32,7 +32,7 @@
           <tr>
             <td>{{{$model->ip}}}</td>
             
-            <td>{{{ DB::table('lugar')->where('id', $model->lugar_id)->first()->nombre  }}}</td>
+            <td>{{{ DB::table('lugares')->where('id', $model->lugar_id)->first()->nombre  }}}</td>
             <td><!-- spacer --></td>
 
             <td class="actions">

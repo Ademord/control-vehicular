@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lugar extends Model
 {
-    protected $table = "lugar";
+    protected $table = "lugares";
     protected $fillable = array('nombre');
     public function camaras()
     {

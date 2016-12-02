@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Camara extends Model
 {
-    protected $table = "camara";
+    protected $table = "camaras";
     protected $fillable = array('ip', 'lugar_id');
   
 }
